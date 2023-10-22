@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ContactPage</title>
+    <link rel="stylesheet" href="contact_page.css" />
+    <link rel="stylesheet" href="cart.css" />
+    <link
+      rel="stylesheet"
+      href="./node_modules/@fortawesome/fontawesome-free/css/all.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./node_modules/font-awesome/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+  </head>
+
+  <body>
+    <input class="d-none" type="checkbox" id="toggle_mobile_nav" />
+    <div class="mobile-nav-menu" data-mobile-menu>
+      <div
+        class="menu-top d-flex justify-content-between align-items-center pe-3"
+      >
+        <h2 class="menu-title font-poppins mb-0"><b>menu</b></h2>
+        <button
+          class="menu-close-btn bg-transparent fs-4"
+          data-mobile-menu-close-btn
+        >
+          <label for="toggle_mobile_nav"
+            ><i class="fa-solid fa-xmark"></i
+          ></label>
+        </button>
+      </div>
+
+      <div class="p-3">
+        <a class="menu-title menu_link font-poppins" href="index.html">home</a>
+      </div>
+
+      <div class="p-3">
+        <a class="menu_link font-poppins" href="product_page.html">Men</a>
+      </div>
+
+      <div class="p-3">
+        <a class="menu_link font-poppins" href="product_page.html">Women</a>
+      </div>
+      <div class="p-3">
+        <a class="menu_link font-poppins" href="contact_page.html">CONTACT</a>
+      </div>
+      <div class="p-3">
+        <a class="menu_link font-poppins" href="about_page.html">ABOUT</a>
+      </div>
+
+      <div class="d-flex justify-content-center align-items-center gap-5 mt-5">
+        <i class="fa-brands fa-square-facebook"></i>
+        <i class="fa-brands fa-square-twitter"></i>
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-linkedin"></i>
+      </div>
+    </div>
+
+    <input class="d-none" type="checkbox" id="toggle_mobile_category" />
+    <div class="mobile-category-menu" data-mobile-menu>
+      <div
+        class="menu-top d-flex justify-content-between align-items-center pe-3"
+      >
+        <h2 class="menu-title font-poppins mb-0">CATEGORIES</h2>
+        <button
+          class="menu-close-btn bg-transparent fs-4"
+          data-mobile-menu-close-btn
+        >
+          <label for="toggle_mobile_category"
+            ><i class="fa-solid fa-xmark"></i
+          ></label>
+        </button>
+      </div>
+
+      <div class="p-3">
+        <a class="menu_link font-poppins" href="product_page.html">HOODIE</a>
+      </div>
+
+      <div class="p-3">
+        <a class="menu_link font-poppins" href="product_page.html">DRESS</a>
+      </div>
+
+      <div class="p-3">
+        <a class="menu_link font-poppins" href="product_page.html">HEELS</a>
+      </div>
+
+      <div class="p-3">
+        <a class="menu_link font-poppins" href="product_page.html"
+          >SUNGLASSES</a
+        >
+      </div>
+    </div>
+
+    <div class="container-fluid text-center header-new pt-2">
+      <div class="row">
+        <div class="col">
+          <a href="index.html" class="header-logo">
+            <img class="header-logo" src="./Image/CM.png" alt="" />
+          </a>
+        </div>
+        <div class="col-6">
+          <div
+            class="header-search-container d-flex align-items-center justify-content-center"
+          >
+            <input
+              type="text"
+              class="search-input"
+              id="search-input"
+              name="search-field"
+              placeholder="Enter your product name"
+              onkeyup="handleSearch(event)"
+            />
+            <button
+              class="search-btn"
+              onclick="addSearchProduct(document.getElementById('search-input').value)"
+            >
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </div>
+        </div>
+        <div class="col">
+          <div class="header-user-actions mt-1">
+            <button class="action-btn bg-transparent mx-auto py-2">
+              <a href="login.html" class="profile"
+                ><i class="fs-5 fa-solid fa-user"></i
+              ></a>
+            </button>
+
+            <button class="action-btn bg-transparent mx-auto py-2">
+              <a href="wish-list.html" class="heart"
+                ><i class="fa-solid fa-heart"></i
+              ></a>
+            </button>
+            <button
+              class="action-btn position-relative animate__animated bg-transparent mx-auto"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#mycart"
+              id="cartButton"
+            >
+              <i class="fs-5 fa-solid fa-bag-shopping"></i>
+              <span
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-counter-badge"
+              >
+                0
+                <span class="visually-hidden">unread messages</span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="desktop-navigation-menu">
+      <ul class="nav_menu">
+        <li class="nav_item">
+          <a href="index.html" class="menu-title">Home</a>
+        </li>
+
+        <li class="nav_item">
+          <a href="#" class="menu-title" onclick="addGenderWoman()">women's</a>
+        </li>
+        <li class="nav_item">
+          <a href="#" class="menu-title" onclick="addGenderMan()">men's</a>
+        </li>
+        <li class="nav_item">
+          <span class="menu-title">Brands</span>
+          <div class="dropdown-list">
+            <ul>
+              <li><a href="product_page.html">The Best One</a></li>
+              <li><a href="product_page.html">ShaYi</a></li>
+              <li><a href="product_page.html">YourStyleList</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="nav_item">
+          <a href="contact_page.html" class="menu-title">contact us</a>
+        </li>
+        <li class="nav_item">
+          <a href="about_page.html" class="menu-title">about</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="header-main">
+      <div class="container text-center">
+        <a href="index.html" class="header-logo">
+          <img class="header-logo" src="./Image/CM.png" alt="" />
+        </a>
+
+        <div
+          class="header-search-container d-flex align-items-center justify-content-center"
+        >
+          <input
+            type="text"
+            class="search-input"
+            id="search-input"
+            name="search-field"
+            placeholder="Enter your product name"
+          />
+          <button class="search-btn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-bottom-nav">
+      <button class="action-btn bg-transparent" data-mobile-menu-open-btn>
+        <label for="toggle_mobile_nav"><i class="fa-solid fa-bars"></i></label>
+      </button>
+
+      <button class="action-btn bg-transparent">
+        <a href="shopping_cart.html"
+          ><i class="fs-5 fa-solid fa-bag-shopping text-black"></i
+        ></a>
+      </button>
+
+      <button class="action-btn bg-transparent">
+        <a href="index.html"><i class="fa-solid fa-house text-black"></i></a>
+      </button>
+
+      <button class="action-btn bg-transparent">
+        <a href="login.html"
+          ><i class="fs-5 fa-solid fa-user text-black"></i
+        ></a>
+      </button>
+
+      <button class="action-btn bg-transparent">
+        <label for="toggle_mobile_category"
+          ><i class="fa-solid fa-list-ul"></i
+        ></label>
+      </button>
+    </div>
+
+    <!-- content -->
+    <div class="container h-100 py-5">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-10">
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <h3 class="fw-normal mb-0 text-black">YOUR WISHLIST</h3>
+          </div>
+
+          <div id="wishlistItemsContainer"></div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer-section">
+      <div class="container">
+        <div class="footer-cta pt-5 pb-5">
+          <div class="row">
+            <div class="col-xl-4 col-md-4 mb-30">
+              <div class="single-cta">
+                <i class="fas fa-map-marker-alt"></i>
+                <div class="cta-text">
+                  <h4>Find us</h4>
+                  <span>Q5H3+JPP, Corner of, Bo Gyoke Rd, Yangon</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-4 col-md-4 mb-30">
+              <div class="single-cta">
+                <i class="fas fa-phone"></i>
+                <div class="cta-text">
+                  <h4>Call us</h4>
+                  <span>09-450369699</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-4 col-md-4 mb-30">
+              <div class="single-cta">
+                <i class="far fa-envelope-open"></i>
+                <div class="cta-text">
+                  <h4>Mail us</h4>
+                  <span>cultureM@gmail.com</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-content pt-5 pb-5">
+          <div class="row">
+            <div class="col-xl-4 col-lg-4 mb-50">
+              <div class="footer-widget">
+                <div class="footer-logo">
+                  <a href="#" class="footer-logo">
+                    <img
+                      class="footerlogo1"
+                      src="./Image/footerlogo1.png"
+                      alt=""
+                    />
+                  </a>
+                </div>
+                <div class="footer-text font-poppins">
+                  <p>
+                    Welcome to CultureM – your ultimate destination for
+                    discovering the treasures of our nation's local brands!
+                    We're delighted to have you here as part of our vibrant
+                    community.
+                  </p>
+                </div>
+                <div class="footer-social-icon font-poppins">
+                  <span>Follow us</span>
+                  <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
+                  <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
+                  <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                  <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+              <div class="footer-widget">
+                <div class="footer-widget-heading">
+                  <h3>Useful Links</h3>
+                </div>
+                <ul>
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="#">Popular Categories</a></li>
+                  <li><a href="about_page.html">About us</a></li>
+                  <li><a href="#">Our Services</a></li>
+                  <li><a href="#">Expert Team</a></li>
+                  <li><a href="contact_page.html">Contact us</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
+              <div class="footer-widget">
+                <div class="footer-widget-heading">
+                  <h3>Subscribe</h3>
+                </div>
+                <div class="footer-text mb-25">
+                  <p>
+                    Don’t miss to subscribe to our new feeds, kindly fill the
+                    form below.
+                  </p>
+                </div>
+                <div class="subscribe-form">
+                  <form action="#">
+                    <input type="text" placeholder="Email Address" />
+                    <button><i class="fab fa-telegram-plane"></i></button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="copyright-area">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xl-6 col-lg-6 text-center text-lg-left">
+              <div class="copyright-text">
+                <p>
+                  Copyright &copy; 2023, All Right Reserved By
+                  <a href="index.html"><b>CultureM</b></a>
+                </p>
+              </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 d-none d-lg-block text-right">
+              <div class="footer-menu">
+                <ul>
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="#">Terms</a></li>
+                  <li><a href="#">Privacy</a></li>
+                  <li><a href="#">Policy</a></li>
+                  <li><a href="contact_page.html">Contact</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <div
+      class="offcanvas offcanvas-end"
+      tabindex="-1"
+      id="mycart"
+      aria-labelledby="mycartLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="mycartLabel">
+          My Cart
+          <span class="badge bg-primary ms-2 cart-counter-badge"> 0 </span>
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="" id="carts"></div>
+        <div class="" style="height: 150px"></div>
+        <div class="order-section">
+          <div
+            class="position-absolute bg-white start-0 bottom-0 w-100 px-3"
+            style="z-index: 5"
+          >
+            <p class="text-end fs-3 mb-2 pt-3 border-top border-primary">
+              $ <span id="totalCost">0</span>
+            </p>
+            <button
+              id="order"
+              class="btn btn-lg btn-primary d-block w-100 mb-3"
+            >
+              Place Order
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="Script.js"></script>
+    <script>
+      generateWishlistItems(wishlistItems);
+    </script>
+  </body>
+</html>
